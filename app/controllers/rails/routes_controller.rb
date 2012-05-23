@@ -8,8 +8,8 @@ class Rails::RoutesController < ApplicationController
   end
 
   private
-  def ensure_local
-    return false if ActionView::Resolver.caching
-  end
 
+  def ensure_local
+    return false unless Rails.env.development? || Rails.env.test?
+  end
 end
